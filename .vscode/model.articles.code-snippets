@@ -1,0 +1,72 @@
+{
+	"Model Imports": {
+		"prefix": "___e6t1.articles.model",
+		"body": [
+			"const ObjectID = require('mongodb').ObjectID;",
+			"",
+			"const config = require('../../utils/config');",
+			"const createDatabaseConnection = require('../../db');"
+		],
+		"description": "Model Imports"
+	},
+	"Insert an article": {
+		"prefix": "___e6t2.articles.model",
+		"body": [
+			"async function insertDocument(payload) {",
+			"  const client = await createDatabaseConnection();",
+			"  const db = client.db(config.database.name);",
+			"",
+			"  return await db.collection('articles').insertOne(payload);",
+			"}"
+		],
+		"description": "Insert an article"
+	},
+	"Fetch all documents": {
+		"prefix": "___e6t3.articles.model",
+		"body": [
+			"async function fetchAllDocuments() {",
+			"  const client = await createDatabaseConnection();",
+			"  const db = client.db(config.database.name);",
+			"  return await db.collection('articles').find({}).toArray();",
+			"}"
+		],
+		"description": "Fetch all documents"
+	},
+	"Update a document": {
+		"prefix": "___e6t4.articles.model",
+		"body": [
+			"async function updateDocument(payload, id) {",
+			"  const client = await createDatabaseConnection();",
+			"  const db = client.db(config.database.name);",
+			"",
+			"  return await db",
+			"    .collection('articles')",
+			"    .updateOne({ _id: ObjectID(id) }, { \\$set: payload });",
+			"}"
+		],
+		"description": "Update a document"
+	},
+	"Delete a document": {
+		"prefix": "___e6t5.articles.model",
+		"body": [
+			"async function deleteDocument(id) {",
+			"  const client = await createDatabaseConnection();",
+			"  const db = client.db(config.database.name);",
+			"  return await db.collection('articles').deleteOne({ _id: ObjectID(id) });",
+			"}"
+		],
+		"description": "Delete a document"
+	},
+	"Export all methods": {
+		"prefix": "___e6t6.articles.model",
+		"body": [
+			"module.exports = {",
+			"  insertDocument,",
+			"  fetchAllDocuments,",
+			"  updateDocument,",
+			"  deleteDocument",
+			"};"
+		],
+		"description": "Export all methods"
+	}
+}

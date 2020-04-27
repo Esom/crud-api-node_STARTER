@@ -1,0 +1,146 @@
+{
+	"Import for Create": {
+		"prefix": "___e7t2.1.articles.api",
+		"body": [
+			"const model = require('./model');",
+			"const httpError = require('../../utils/httpError');"
+		],
+		"description": "Import for Create"
+	},
+	"Export function for Create": {
+		"prefix": "___e7t2.2.1.articles.api",
+		"body": [
+			"module.exports = function (route) {",
+			"  //",
+			"};"
+		],
+		"description": "Export function for Create"
+	},
+	"Return route for Create": {
+		"prefix": "___e7t2.2.2.articles.api",
+		"body": [
+			"return route.post();"
+		],
+		"description": "Return route for Create"
+	},
+	"Handler for Create": {
+		"prefix": "___e7t2.2.3.articles.api",
+		"body": [
+			"async function (req, res) {",
+			"  //",
+			"}"
+		],
+		"description": "Handler for Create"
+	},
+	"Logic for Create": {
+		"prefix": "___e7t2.2.4.articles.api",
+		"body": [
+			"try {",
+			"  const data = await model.insertDocument(req.body);",
+			"",
+			"  res.json({ data: { insertedId: data.insertedId } });",
+			"} catch (error) {",
+			"  httpError(res, error);",
+			"}"
+		],
+		"description": "Logic for Create"
+	},
+	"Read": {
+		"prefix": "___e7t3.articles.api",
+		"body": [
+			"const model = require('./model');",
+			"const httpError = require('../../utils/httpError');",
+			"",
+			"module.exports = function (route) {",
+			"  return route.get(async function (_, res) {",
+			"    try {",
+			"      const data = await model.fetchAllDocuments();",
+			"      res.json({ data });",
+			"    } catch (error) {",
+			"      httpError(res, error);",
+			"    }",
+			"  });",
+			"};"
+		],
+		"description": "Read"
+	},
+	"Update": {
+		"prefix": "___e7t4.articles.api",
+		"body": [
+			"const model = require('./model');",
+			"const httpError = require('../../utils/httpError');",
+			"",
+			"module.exports = function (route) {",
+			"  return route.put(async function (req, res) {",
+			"    try {",
+			"      const data = await model.updateDocument(req.body, req.params.id);",
+			"",
+			"      res.json({ data: { modifiedCount: data.modifiedCount } });",
+			"    } catch (error) {",
+			"      httpError(res, error);",
+			"    }",
+			"  });",
+			"};",
+			""
+		],
+		"description": "Update"
+	},
+	"Delete": {
+		"prefix": "___e7t5.articles.api",
+		"body": [
+			"const model = require('./model');",
+			"const httpError = require('../../utils/httpError');",
+			"",
+			"module.exports = function (route) {",
+			"  return route.delete(async function (req, res) {",
+			"    try {",
+			"      const data = await model.deleteDocument(req.params.id);",
+			"",
+			"      res.json({ data: { deletedCount: data.deletedCount } });",
+			"    } catch (error) {",
+			"      httpError(res, error);",
+			"    }",
+			"  });",
+			"};",
+			""
+		],
+		"description": "Delete"
+	},
+	"Imports for Assemble routes": {
+		"prefix": "___e7t6.1.articles.api",
+		"body": [
+			"const create = require('./create');",
+			"const read = require('./read');",
+			"const update = require('./update');",
+			"const remove = require('./delete');"
+		],
+		"description": "Imports for Assemble routes"
+	},
+	"registerRoutes for Assemble routes": {
+		"prefix": "___e7t6.2.articles.api",
+		"body": [
+			"module.exports = function registerRoutes(router) {",
+			"  ",
+			"};"
+		],
+		"description": "registerRoutes for Assemble routes"
+	},
+	"Base and Params for Assemble routes": {
+		"prefix": "___e7t6.3.articles.api",
+		"body": [
+			"const baseRoute = router.route('/articles');",
+			"const paramRoute = router.route('/articles/:id');"
+		],
+		"description": "Base and Params for Assemble routes"
+	},
+	"Mounts routes for Assemble routes": {
+		"prefix": "___e7t6.4.articles.api",
+		"body": [
+			"create(baseRoute);",
+			"read(baseRoute);",
+			"update(paramRoute);",
+			"remove(paramRoute);"
+		],
+		"description": "Mounts routes for Assemble routes"
+	}
+}

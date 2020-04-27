@@ -1,0 +1,88 @@
+{
+	"Action event and name": {
+		"prefix": "___e3t2.actions.deploy",
+		"body": [
+			"on: [push]",
+			"",
+			"name: Deploy CRUD API to Azure"
+		],
+		"description": "Action event and name"
+	},
+	"Jobs, OS, and Steps": {
+		"prefix": "___e3t3.actions.deploy",
+		"body": [
+			"jobs:",
+			"  build-and-deploy:",
+			"    runs-on: ubuntu-latest",
+			"    steps:"
+		],
+		"description": "Jobs, OS, and Steps"
+	},
+	"Create a Step": {
+		"prefix": "___e3t4.actions.deploy",
+		"body": [
+			" - name: 'Checkout GitHub Action' ",
+			"   uses: actions/checkout@master"
+		],
+		"description": "Create a Step"
+	},
+	"Login to Azure Step": {
+		"prefix": "___e3t5.actions.deploy",
+		"body": [
+			"- name: 'Login to Azure'",
+			"  uses: azure/login@v1",
+			"  with:",
+			"    creds: ${{ secrets.AZURE_CREDENTIALS }}"
+		],
+		"description": "Login to Azure Step"
+	},
+	"Setup Node Step": {
+		"prefix": "___e3t6.actions.deploy",
+		"body": [
+			"- name: Setup Node 12.x",
+			"  uses: actions/setup-node@v1",
+			"  with:",
+			"    node-version: '12.x'"
+		],
+		"description": "Setup Node Step"
+	},
+	"npm install build, test": {
+		"prefix": "___e3t7.actions.deploy",
+		"body": [
+			"- name: 'npm install, build, and test'",
+			"  run: |",
+			"    npm install",
+			"    npm run build --if-present",
+			"    npm run test --if-present"
+		],
+		"description": "npm install build, test"
+	},
+	"Deploy to Azure": {
+		"prefix": "___e3t8.actions.deploy",
+		"body": [
+			"- name: 'Deploy to Azure'",
+			"  uses: azure/webapps-deploy@v2",
+			"  with:",
+			"    app-name: 'crud-api-node'"
+		],
+		"description": "Deploy to Azure"
+	},
+	"Logout of Azure": {
+		"prefix": "___e3t9.actions.deploy",
+		"body": [
+			"- name: logout",
+			"  run: |",
+			"    az logout"
+		],
+		"description": "Logout of Azure"
+	},
+	"Database env": {
+		"prefix": "___e8t3.actions.deploy",
+		"body": [
+			"env:",
+			"  MONGO_DB_CONNECTION_STRING: ${{ secrets.MONGO_DB_CONNECTION_STRING }}",
+			"  MONGO_DB_DATABASE_NAME: ${{ secrets.MONGO_DB_DATABASE_NAME }}"
+		],
+		"description": "Database env"
+	}
+}

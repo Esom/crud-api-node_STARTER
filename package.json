@@ -1,0 +1,30 @@
+{
+  "name": "crud-api-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "seed": "node -e 'require(\"./utils/seed.js\")()'",
+    "flush": "node -e 'require(\"./utils/flush.js\")()'",
+    "test:dev": "mocha --timeout 100000 --exclude \"./test/**/!(*.skip).js\" -w --recursive",
+    "test": "mocha --timeout 100000 \"./test/**/!(*.skip).js\" --exit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.6"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^7.1.1",
+    "nodemon": "^2.0.3"
+  }
+}

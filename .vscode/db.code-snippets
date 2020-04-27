@@ -1,0 +1,42 @@
+{
+	"Mongo Client and Config": {
+		"prefix": "___e5t2.db",
+		"body": [
+			"const MongoClient = require('mongodb').MongoClient;",
+			"",
+			"const config = require('../utils/config');"
+		],
+		"description": "Mongo Client and Config"
+	},
+	"Create a Client": {
+		"prefix": "___e5t3.db",
+		"body": [
+			"function createDatabaseClient(url) {",
+			"  return new MongoClient(url, { useUnifiedTopology: true });",
+			"}"
+		],
+		"description": "Create a Client"
+	},
+	"Create a Connection": {
+		"prefix": "___e5t4.db",
+		"body": [
+			"async function createDatabaseConnection() {",
+			"  const client = createDatabaseClient(config.database.connectionString);",
+			"  try {",
+			"    const clientConnection = await client.connect();",
+			"    return clientConnection;",
+			"  } catch (error) {",
+			"    throw error;",
+			"  }",
+			"}"
+		],
+		"description": "Create a Connection"
+	},
+	"Export Connection": {
+		"prefix": "___e5t5.db",
+		"body": [
+			"module.exports = createDatabaseConnection;"
+		],
+		"description": "Export Connection"
+	}
+}

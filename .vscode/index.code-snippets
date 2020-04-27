@@ -1,0 +1,55 @@
+{
+	"Setup Router": {
+		"prefix": "___e4t1.index",
+		"body": [
+			"// ROUTER",
+			"",
+			"const router = express.Router();"
+		],
+		"description": "Setup Router"
+	},
+	"Add a Route": {
+		"prefix": "___e4t2.index",
+		"body": [
+			"router.get('/', function (req, res) {",
+			"  res.json({ message: 'hooray! welcome to our api!' });",
+			"});"
+		],
+		"description": "Add a Route"
+	},
+	"Mount Routes": {
+		"prefix": "___e4t3.index",
+		"body": [
+			"app.use('/api', router);"
+		],
+		"description": "Mount Routes"
+	},
+	"RESTful Routing": {
+		"prefix": "___e4t4.index",
+		"body": [
+			"router",
+			"  .route('/ping')",
+			"  .post(function (req, res) {",
+			"    res.send('You POST a PING');",
+			"  })",
+			"  .get(function (req, res) {",
+			"    res.send('You GET a PING');",
+			"  });"
+		],
+		"description": "RESTful Routing"
+	},
+	"Import articles routes": {
+		"prefix": "___e7t7.1.index",
+		"body": [
+			"const registerArticleRoutes = require('./api/articles');"
+		],
+		"description": "Import articles routes"
+	},
+	"Register routes in index": {
+		"prefix": "___e7t7.2.index",
+		"body": [
+			"registerArticleRoutes(router);"
+		],
+		"description": "Register routes in index"
+	}
+}
